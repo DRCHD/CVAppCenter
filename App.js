@@ -9,6 +9,7 @@
 
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View, Button} from 'react-native';
+import Analytics from 'appcenter-analytics';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -20,20 +21,19 @@ const instructions = Platform.select({
 type Props = {};
 export default class App extends Component<Props> {
   state = {
-    x: "something"
+    x: "Simple App Center Text App"
   }
 
   crashApp = () => {
+      Analytics.trackEvent("before Crash");
       this.setState(x,null)
   }
 
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>Simple App Center Test App</Text>
-        <Text style={styles.instructions}>{instructions}</Text>
-        <Button title="Crash the App" onPress={this.crashApp} />
-        <Text style={styles.instructions}>{this.state.x}</Text>
+        <Text style={styles.welcome}>{this.state.x}</Text>
+        <Button title="Crash the App" onPress={this.crashApp} />        
       </View>
     );
   }
