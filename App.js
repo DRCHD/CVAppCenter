@@ -21,16 +21,9 @@ const instructions = Platform.select({
 type Props = {};
 export default class App extends Component<Props> {
   
-  constructor(props){
-    super(props);
-    this.state = { text: ""}
-  }
-  
   state = {
-    mytext: "Simple App Center Text App ",
-    y: " __ABCDE____",
-    mytext: "<ANTWORT>",
-    NumberHolder : 5
+    x: "Simple App Center Text App ",
+
   }
 
   crashApp = () => {
@@ -38,37 +31,14 @@ export default class App extends Component<Props> {
       this.setState(x,null)
   }
 
-  onPressLearnMore = () => {
-      x = Math.floor(Math.random() * 5) + 1 ;
 
-      if(this.state.text == ""+x){
-        this.setState({y: "RICHTIG"})
-      } else {
-        this.setState({y: "FALSCH =>" + x})
-      }
-
-      //this.setState({y: ""+x})
-  }
 
 
   render() {
     return (
       <View style={styles.container}>
-
-      
-
-        <Text style={styles.welcome}>Ich denke an eine Zahl zwischen 1 und 5, Welche?</Text>
-        <TextInput  style={{height: 40, width: 50, borderColor: 'gray', borderWidth: 1}} 
-                    onChangeText={(text) => this.setState({text})}
-                    value={this.state.text}
-        />
-        <Button
-          onPress={this.onPressLearnMore}
-          title="eingabe"
-          color="#841584"
-        />
-       <Text style={styles.welcome}>{this.state.y}</Text>
-
+        <Text style={styles.welcome}>{this.state.x}</Text>
+        <Button title="Crash the App" onPress={this.crashApp} />   
       </View>
     );
   }
